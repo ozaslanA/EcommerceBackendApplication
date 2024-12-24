@@ -9,7 +9,7 @@ import com.ozaslan.e_commerce_backend.repository.UserRepository;
 
 import com.ozaslan.e_commerce_backend.dtos.request.SigninRequest;
 import com.ozaslan.e_commerce_backend.dtos.request.SignupRequest;
-import com.ozaslan.e_commerce_backend.service.abstracts.CustomerUserServiceImpl;
+import com.ozaslan.e_commerce_backend.service.concrates.CustomerUserServiceImpl;
 
 import com.ozaslan.e_commerce_backend.service.concrates.PasswordResetService;
 import org.springframework.http.ResponseEntity;

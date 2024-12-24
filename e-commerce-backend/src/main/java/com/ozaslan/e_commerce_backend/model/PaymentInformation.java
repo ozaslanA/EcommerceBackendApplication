@@ -9,8 +9,7 @@ import java.time.LocalDate;
 
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class PaymentInformation {
 
 
@@ -25,4 +24,39 @@ public class PaymentInformation {
 
     @Column(name = "cvv", nullable = false)
     private String cvv;
+
+    public PaymentInformation() {
+    }
+
+    public String getCardholderName() {
+        return cardholderName;
+    }
+
+    public void setCardholderName(String cardholderName) {
+        this.cardholderName = cardholderName;
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public LocalDate getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(LocalDate expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
+    public String getCvv() {
+        return cvv;
+    }
+
+    public void setCvv(String cvv) {
+        this.cvv = cvv;
+    }
 }

@@ -1,4 +1,4 @@
-package com.ozaslan.e_commerce_backend.service.abstracts;
+package com.ozaslan.e_commerce_backend.service.concrates;
 
 import com.ozaslan.e_commerce_backend.model.User;
 import com.ozaslan.e_commerce_backend.repository.UserRepository;
