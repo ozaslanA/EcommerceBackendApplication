@@ -32,6 +32,10 @@ public class Review {
 
     private LocalDateTime createdAt;
 
+    public Review() {
+    }
+
+
     public Review(Long id, String review, Product product, User user, LocalDateTime createdAt) {
         this.id = id;
         this.review = review;
@@ -40,8 +44,6 @@ public class Review {
         this.createdAt = createdAt;
     }
 
-    public Review() {
-    }
 
     public Long getId() {
         return id;

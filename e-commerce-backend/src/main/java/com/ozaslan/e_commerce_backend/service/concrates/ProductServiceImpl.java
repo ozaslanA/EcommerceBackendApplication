@@ -158,8 +158,9 @@ public class ProductServiceImpl implements ProductService {
         return List.of();
     }
 
+
     @Override
-    public Page<Product> getAllProduct(String category, List<String> colors, List<String> sizes, Integer minPrice, Integer maxPrice, Integer minDisc, Integer minDiscount, String sort, String stock, Integer pageNumber, Integer pageSize) {
+    public Page<Product> getAllProduct(String category, List<String> colors, List<String> sizes, Integer minPrice, Integer maxPrice, Integer minDiscount, String sort, String stock, Integer pageNumber, Integer pageSize) {
 
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
         List<Product> products = productRepository.filterProducts(category, minPrice, maxPrice, minDiscount, sort);
@@ -181,5 +182,10 @@ public class ProductServiceImpl implements ProductService {
         Page<Product> filteredProducts = new PageImpl<>(pageContent, pageable, products.size());
         return filteredProducts;
 
+    }
+
+    @Override
+    public List<Product> findAllProducts() {
+        return productRepository.findAll();
     }
 }

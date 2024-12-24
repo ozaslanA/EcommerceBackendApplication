@@ -12,6 +12,9 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "order_id")
+    private String orderId;
+
     @ManyToOne
     private User user;
 
@@ -26,7 +29,7 @@ public class Order {
     private Address shippingAddress;
 
     @Embedded
-    private PaymentDetails paymentDetails=new PaymentDetails();
+    private PaymentDetails paymentDetails = new PaymentDetails();
 
     private double totalPrice;
 
@@ -38,11 +41,14 @@ public class Order {
 
     private int totalItem;
 
+    private LocalDateTime createAt;
+
     public Order() {
     }
 
-    public Order(Long id, User user, List<OrderItem> orderItems, LocalDateTime orderDate, LocalDateTime deliveryDate, Address shippingAddress, PaymentDetails paymentDetails, double totalPrice, Integer totalDiscountedPrice, Integer discounte, String orderStatus, int totalItem) {
+    public Order(Long id, String orderId, User user, List<OrderItem> orderItems, LocalDateTime orderDate, LocalDateTime deliveryDate, Address shippingAddress, PaymentDetails paymentDetails, double totalPrice, Integer totalDiscountedPrice, Integer discounte, String orderStatus, int totalItem, LocalDateTime createAt) {
         this.id = id;
+        this.orderId = orderId;
         this.user = user;
         this.orderItems = orderItems;
         this.orderDate = orderDate;
@@ -54,6 +60,7 @@ public class Order {
         this.discounte = discounte;
         this.orderStatus = orderStatus;
         this.totalItem = totalItem;
+        this.createAt = createAt;
     }
 
     public Long getId() {
@@ -62,6 +69,14 @@ public class Order {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
     public User getUser() {
@@ -150,5 +165,13 @@ public class Order {
 
     public void setTotalItem(int totalItem) {
         this.totalItem = totalItem;
+    }
+
+    public LocalDateTime getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(LocalDateTime createAt) {
+        this.createAt = createAt;
     }
 }

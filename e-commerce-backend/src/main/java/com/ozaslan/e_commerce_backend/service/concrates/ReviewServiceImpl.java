@@ -50,7 +50,7 @@ public class ReviewServiceImpl implements ReviewService {
         Optional<Review> optionalReview = reviewRapository.findById(reviewId);
 
         if (optionalReview.isEmpty()) {
-            throw new ReviewException("Review not foundt for ID: " + reviewId);
+            throw new ReviewException("Review not found for ID: " + reviewId);
         }
 
         Review review = optionalReview.get();

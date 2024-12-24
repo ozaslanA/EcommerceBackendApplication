@@ -1,7 +1,7 @@
 package com.ozaslan.e_commerce_backend.service.concrates;
-
 import com.ozaslan.e_commerce_backend.dtos.request.RatingRequest;
 import com.ozaslan.e_commerce_backend.exceptions.ProductException;
+import com.ozaslan.e_commerce_backend.exceptions.RatingException;
 import com.ozaslan.e_commerce_backend.model.Product;
 import com.ozaslan.e_commerce_backend.model.Rating;
 import com.ozaslan.e_commerce_backend.model.User;
@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RatingServiceImpl implements RatingService {
@@ -40,5 +41,23 @@ public class RatingServiceImpl implements RatingService {
     @Override
     public List<Rating> getProductsRating(Long productId) {
         return ratingRepository.getAllProductsRating(productId);
+    }
+
+    @Override
+    public Rating updateRating(Long ratingId, RatingRequest req, User user) throws RatingException {
+        Optional<Rating> optionalRating = ratingRepository.findById(ratingId);
+
+
+        if (optionalRating.isEmpty()) {
+            throw new RatingException("Rating not found for ID: " + ratingId);
+        }
+        Rating rating = optionalRating.get();
+        if (!rating.getUser().getId().equals(user.getId())) {
+            throw new IllegalArgumentException("User is not authorized to update this rating");
+        }
+
+        rating.setRating(req.getRating());
+        rating.setCreatedAt(LocalDateTime.now());
+        return ratingRepository.save(rating);
     }
 }
