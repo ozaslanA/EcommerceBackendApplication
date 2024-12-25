@@ -1,36 +1,32 @@
 package com.ozaslan.e_commerce_backend.service.abstracts;
-
 import com.ozaslan.e_commerce_backend.exceptions.OrderException;
 import com.ozaslan.e_commerce_backend.model.Address;
 import com.ozaslan.e_commerce_backend.model.Order;
 import com.ozaslan.e_commerce_backend.model.User;
-import org.aspectj.weaver.ast.Or;
-
 import java.util.List;
-
 
 public interface OrderService {
 
 
-    public Order createOrder(User user, Address shippingAdress);
+    Order createOrder(User user, Address shippingAdress);
 
-    public Order findOrderById(Long orderId) throws OrderException;
+    Order findOrderById(Long orderId) throws OrderException;
 
-    public List<Order> usersOrderHistory(Long userId);
+    List<Order> usersOrderHistory(Long userId);
 
-    public Order placedOrder(Long orderId) throws OrderException;
+    Order placedOrder(Long orderId) throws OrderException;
 
-    public Order confirmedOrder(Long orderId) throws OrderException;
+    Order confirmedOrder(Long orderId) throws OrderException;
 
-    public Order shippedOrder(Long orderId) throws OrderException;
+    Order shippedOrder(Long orderId) throws OrderException;
 
-    public Order deliveredOrder(Long orderId) throws OrderException;
+    Order deliveredOrder(Long orderId) throws OrderException;
 
-    public Order canceledOrder(Long orderId) throws OrderException;
+    Order canceledOrder(Long orderId) throws OrderException;
 
-    public List<Order> getAllOrders();
+    List<Order> getAllOrders();
 
-    public Order deleteOrder(Long orderId) throws OrderException;
+    Order deleteOrder(Long orderId) throws OrderException;
 
 
 }
